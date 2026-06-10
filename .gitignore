@@ -1,0 +1,23 @@
+# Keep downloaded source datasets out of git.
+data/raw/*
+!data/raw/.gitkeep
+
+# Keep generated datasets out unless intentionally promoted.
+data/processed/*
+!data/processed/.gitkeep
+
+# Allow only tiny curated examples in samples.
+data/samples/*
+!data/samples/.gitkeep
+
+# Python / notebook noise
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+
+# Local secrets and OS files
+.env
+.env.*
+.DS_Store
+Thumbs.db
