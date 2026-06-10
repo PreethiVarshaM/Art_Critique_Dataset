@@ -22,6 +22,8 @@ Each row represents one artwork selected from an existing source dataset, plus y
 | `critique_notes` | no | Human-written notes explaining the labels. |
 | `split` | no | `train`, `validation`, or `test`. |
 
+During preparation, label fields may be blank in an `*_unlabeled.csv` file. Before training, promote the completed file to `critique_labels_v1.csv` and validate it without `--allow-empty`.
+
 ## Example
 
 ```csv

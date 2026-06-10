@@ -81,6 +81,15 @@ pip install -r requirements.txt
 jupyter notebook
 ```
 
+If you downloaded the Kaggle WikiArt zip as `Downloads/archive.zip`, you can prepare the first subset without extracting the full 33GB archive:
+
+```powershell
+python scripts/prepare_wikiart_subset.py --archive "$env:USERPROFILE\Downloads\archive.zip" --target-size 500 --extract-images
+python scripts/validate_labels.py data/labels/critique_labels_wikiart_unlabeled.csv --allow-empty
+```
+
+This extracts only the selected images to `data/processed/wikiart_subset/images/` and writes a CSV for manual labeling.
+
 ## Connection to App Repo
 
 The app repo should consume exported CSV files from this dataset repo. Keep the app code and dataset work separate:

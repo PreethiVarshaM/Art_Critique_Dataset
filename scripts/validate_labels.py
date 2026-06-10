@@ -26,11 +26,13 @@ REQUIRED_COLUMNS = {
 
 
 def main() -> int:
-    if len(sys.argv) != 2:
-        print("Usage: python scripts/validate_labels.py data/labels/critique_labels_v1.csv")
+    allow_empty = "--allow-empty" in sys.argv
+    args = [arg for arg in sys.argv[1:] if arg != "--allow-empty"]
+    if len(args) != 1:
+        print("Usage: python scripts/validate_labels.py data/labels/critique_labels_v1.csv [--allow-empty]")
         return 2
 
-    csv_path = Path(sys.argv[1])
+    csv_path = Path(args[0])
     if not csv_path.exists():
         print(f"File not found: {csv_path}")
         return 2
@@ -57,6 +59,8 @@ def main() -> int:
 
             for column, allowed in ALLOWED_VALUES.items():
                 value = row.get(column, "").strip()
+                if allow_empty and not value:
+                    continue
                 if value not in allowed:
                     errors.append(
                         f"row {row_number}: invalid {column}={value!r}; expected one of {sorted(allowed)}"
