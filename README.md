@@ -72,6 +72,15 @@ python scripts/validate_labels.py data/labels/critique_labels_v1.csv
 
 6. Use `notebooks/03_dataset_stats.ipynb` to inspect label balance before training.
 
+## Notebook Setup
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+jupyter notebook
+```
+
 ## Connection to App Repo
 
 The app repo should consume exported CSV files from this dataset repo. Keep the app code and dataset work separate:
